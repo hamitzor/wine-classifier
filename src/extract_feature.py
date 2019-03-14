@@ -5,7 +5,7 @@ if __name__ == "__main__":
     from datetime import datetime
     from modules import args, stdout, filesystem, parser
     from modules.database import database
-    import os
+    from os import path
 
     args_parser = args.parser
 
@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     stdout = stdout.Stdout(args.api or args.quiet)
 
-    file = '/home/hamit/projects/python/rain-predictor/data/data_set.csv'
+    file = path.abspath('../data/data_set.csv')
 
     col_parsers = [
         lambda x: datetime.strptime(x, '%Y-%m-%d').date(),
