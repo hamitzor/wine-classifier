@@ -1,1 +1,1 @@
-A model trained for predicting whether or not it will rain tomorrow.
+A model trained for classifying wines
