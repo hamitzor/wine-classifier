@@ -9,15 +9,16 @@ def pca(values):
 
 
 def lda(values, targets):
-    lda_result = LinearDiscriminantAnalysis(
-        n_components=2).fit_transform(values, targets)
+    lda_object = LinearDiscriminantAnalysis(
+        n_components=2)
+    lda_result = lda_object.fit_transform(values, targets)
 
     # merge result with target values
     lda_with_classes = [
         np.append(lda_result[i], targets[i]) for i in range(len(lda_result))]
 
     # return result as DataFrame
-    return pd.DataFrame(data=lda_with_classes,
-                        columns=['PC1',
-                                 'PC2',
-                                 'Class'])
+    return (lda_object, pd.DataFrame(data=lda_with_classes,
+                                     columns=['PC1',
+                                              'PC2',
+                                              'Class']))
